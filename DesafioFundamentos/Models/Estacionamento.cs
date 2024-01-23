@@ -1,15 +1,17 @@
-namespace DesafioFundamentos.Models
+amespace DesafioFundamentos.Models
 {
     public class Estacionamento
     {
         private decimal precoInicial = 0;
         private decimal precoPorHora = 0;
+        private decimal precoMinutos = 0;
         private List<string> veiculos = new List<string>();
 
-        public Estacionamento(decimal precoInicial, decimal precoPorHora)
+        public Estacionamento(decimal precoInicial, decimal precoPorHora, decimal precoMinutos)
         {
             this.precoInicial = precoInicial;
             this.precoPorHora = precoPorHora;
+            this.precoMinutos = precoMinutos;
         }
 
         public void AdicionarVeiculo()
@@ -34,33 +36,42 @@ namespace DesafioFundamentos.Models
         {
             Console.WriteLine("Digite a placa do veículo para remover:");
 
-            string placa = Console.ReadLine();
+    string placa = Console.ReadLine();
 
-            if (veiculos.Contains(placa))
+    if (veiculos.Contains(placa))
+    {
+        veiculos.Remove(placa);
+
+        Console.WriteLine($"Veículo com placa {placa} removido com sucesso!");
+
+        Console.WriteLine("Digite a quantidade de horas que o veículo permaneceu estacionado:");
+
+        if (int.TryParse(Console.ReadLine(), out int horas))
+        {
+            Console.WriteLine("Agora, digite a quantidade de minutos:");
+
+            if (int.TryParse(Console.ReadLine(), out int minutos))
             {
-                veiculos.Remove(placa);
+                decimal valorTotal = precoInicial + (precoPorHora * horas + (precoPorHora / 60) * minutos);
 
-                Console.WriteLine($"Veículo com placa {placa} removido com sucesso!");
-
-                Console.WriteLine("Digite a quantidade de horas que o veículo permaneceu estacionado:");
-
-                if (int.TryParse(Console.ReadLine(), out int horas))
-                {
-                    decimal valorTotal = precoInicial + (precoPorHora * horas);
-
-                    Console.WriteLine($"O veículo {placa} foi removido e o preço total foi de: R$ {valorTotal}");
-                }
-                else
-                {
-                    Console.WriteLine("Quantidade de horas inválida. Certifique-se de inserir um número válido.");
-                }
+                Console.WriteLine($"O veículo {placa} foi removido e o preço total foi de: R$ {valorTotal}");
             }
             else
             {
-                Console.WriteLine($"Veículo com placa {placa} não encontrado no estacionamento.");
+                Console.WriteLine("Quantidade de minutos inválida. Certifique-se de inserir um número válido.");
             }
         }
-
+        else
+        {
+            Console.WriteLine("Quantidade de horas inválida. Certifique-se de inserir um número válido.");
+        }
+    }
+    else
+    {
+        Console.WriteLine($"Veículo com placa {placa} não encontrado no estacionamento.");
+    }
+}
+    
         public void ListarVeiculos()
         {
             if (veiculos.Any())
@@ -78,4 +89,5 @@ namespace DesafioFundamentos.Models
             }
         }
     }
-}
+    }
+
