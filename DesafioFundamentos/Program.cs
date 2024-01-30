@@ -1,10 +1,9 @@
-using DesafioFundamentos.Models;
+﻿using DesafioFundamentos.Models;
 
 Console.OutputEncoding = System.Text.Encoding.UTF8;
 
 decimal precoInicial = 0;
 decimal precoPorHora = 0;
-decimal precoMinutos = 0;
 
 Console.WriteLine("Seja bem vindes ao sistema de estacionamento!\nDigite o preço inicial:");
 precoInicial = Convert.ToDecimal(Console.ReadLine());
@@ -12,13 +11,7 @@ precoInicial = Convert.ToDecimal(Console.ReadLine());
 Console.WriteLine("Agora digite o preço por hora:");
 precoPorHora = Convert.ToDecimal(Console.ReadLine());
 
-<<<<<<< HEAD
 Estacionamento es = new Estacionamento(precoInicial, precoPorHora);
-=======
-// Instancia a classe Estacionamento, já com os valores obtidos anteriormente
-Estacionamento es = new Estacionamento(precoInicial, precoPorHora, precoMinutos);
-
->>>>>>> 11827b76bc4b35dc2e5dd8f0d23abd37ef8142e3
 bool exibirMenu = true;
 
 while (exibirMenu)
@@ -58,8 +51,3 @@ while (exibirMenu)
 }
 
 Console.WriteLine("O programa se encerrou");
-
-<<<<<<< HEAD
-
-=======
->>>>>>> 11827b76bc4b35dc2e5dd8f0d23abd37ef8142e3
