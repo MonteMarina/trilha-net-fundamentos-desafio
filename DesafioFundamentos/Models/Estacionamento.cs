@@ -20,12 +20,6 @@ namespace DesafioFundamentos.Models
             Console.WriteLine("Olá, digite a placa do veículo para estacionar:");
             string placa = Console.ReadLine().ToUpper();
 
-            if (veiculos.Contains(placa))
-            {
-                Console.WriteLine($"Veículo com a placa {placa} já cadastrado.");
-                return;
-            }
-
             if (placa.Length == 7)
             {
                 veiculos.Add(placa);
